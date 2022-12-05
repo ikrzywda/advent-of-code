@@ -40,6 +40,30 @@ fn get_result(rps_match: (Move, Move)) -> u32 {
     return result + my_move as u32;
 }
 
+fn get_result_pt_2(rps_match: (Move, Move)) -> u32 {
+    let (my_move, opponent_move) = rps_match;
+    let result: u32;
+
+    match opponent_move {
+        Move::Rock => match my_move {
+            Move::Rock => result = Move::Scissors as u32 + 0,
+            Move::Paper => result = Move::Rock as u32 + 3,
+            Move::Scissors => result = Move::Paper as u32 + 6,
+        },
+        Move::Paper => match my_move {
+            Move::Rock => result = Move::Rock as u32 + 0,
+            Move::Paper => result = Move::Paper as u32 + 3,
+            Move::Scissors => result = Move::Scissors as u32 + 6,
+        },
+        Move::Scissors => match my_move {
+            Move::Rock => result = Move::Paper as u32 + 0,
+            Move::Paper => result = Move::Scissors as u32 + 3,
+            Move::Scissors => result = Move::Rock as u32 + 6,
+        },
+    }
+    return result;
+}
+
 fn get_score() -> u32 {
     let mut net_score: u32 = 0;
     let mut my_input: String = String::new();
@@ -52,7 +76,7 @@ fn get_score() -> u32 {
                 if sscanf!(&line, "{} {}", opponent_input, my_input).is_ok() {
                     if let Some(my_move) = new_move(&my_input).ok().take() {
                         if let Some(opponent_move) = new_move(&opponent_input).ok().take() {
-                            net_score += get_result((my_move, opponent_move));
+                            net_score += get_result_pt_2((my_move, opponent_move));
                         }
                     }
                 }
