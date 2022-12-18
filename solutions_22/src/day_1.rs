@@ -17,7 +17,7 @@ fn get_calorie_count() -> Vec<u32> {
     return result_vector;
 }
 
-fn main() {
+fn solution() {
     let mut net_calories = get_calorie_count();
     net_calories.sort();
     let mut net_top_three_calories = 0;

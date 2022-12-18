@@ -46,6 +46,6 @@ fn priority_sum() -> u32 {
     return net_score;
 }
 
-fn main() {
+pub fn solution() {
     println!("Result: {}", priority_sum());
 }

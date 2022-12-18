@@ -87,6 +87,6 @@ fn get_score() -> u32 {
     return net_score;
 }
 
-fn main() {
+fn solution() {
     println!("Result: {}", get_score());
 }
